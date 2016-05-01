@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Hello">Hello World, Click Me!</string>
     <string name="ApplicationName">AHFMPlayer</string>
+    <string name="Play">Play</string>
+    <string name="Stop">Stop</string>
+    <string name="NowPlaying">Now playing</string>
+    <string name="Stopped">Stopped</string>
+    <string name="Buffering">Buffering</string>
+    <string name="PlaybackError">Playback error. Do you have a valid internet connection?</string>
+    <string name="Ready">Ready</string>
 </resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/ContainerPadding">
+    <TextView
+        android:id="@+id/PlaybackStatusLabel"
+        android:layout_marginTop="@dimen/NowPlayingLabelMargin"
+        android:layout_marginBottom="@dimen/NowPlayingLabelMargin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/PlayButton"
+        android:text="@string/Play"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/StopButton"
+        android:text="@string/Stop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
