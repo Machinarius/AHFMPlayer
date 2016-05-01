@@ -6,6 +6,7 @@ using Android.Media;
 using Android.OS;
 using Debug = System.Diagnostics.Debug;
 
+// TODO: Implement ideas from https://blog.xamarin.com/background-audio-streaming-with-xamarin-android/
 namespace AHFMPlayer.Controllers {
   [Service]
   public class PlaybackService : Service {
@@ -59,6 +60,7 @@ namespace AHFMPlayer.Controllers {
 
       mediaPlayer = new MediaPlayer();
       mediaPlayer.Prepared += OnMediaPlayerPrepared;
+      mediaPlayer.Error += OnMediaPlayerError;
       mediaPlayer.SetAudioStreamType(Stream.Music);
 
       try {
@@ -75,6 +77,9 @@ namespace AHFMPlayer.Controllers {
     }
 
     private void DestroyMediaPlayer() {
+      mediaPlayer.Prepared -= OnMediaPlayerPrepared;
+      mediaPlayer.Error -= OnMediaPlayerError;
+
       mediaPlayer.Stop();
       mediaPlayer.Release();
       mediaPlayer.Dispose();
@@ -98,6 +103,11 @@ namespace AHFMPlayer.Controllers {
     private void OnMediaPlayerPrepared(object sender, EventArgs e) {
       mediaPlayer.Start();
       Status = PlaybackStatus.Playback;
+    }
+
+    private void OnMediaPlayerError(object sender, MediaPlayer.ErrorEventArgs e) {
+      DestroyMediaPlayer();
+      Status = PlaybackStatus.Error;
     }
 
     public class Controller : Binder {
